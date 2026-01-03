@@ -1,26 +1,417 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DearDoor Studio</title>
+    <meta name="description" content="DearDoor Studio — a personal lab for turning ideas into apps and web tools, starting in 2026.">
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; line-height: 1.6; }
-        .logo { width: 100px; }
-        .contact { margin-top: 30px; padding: 20px; background: #f9f9f9; }
+        :root {
+            --bg: #0b0f14;
+            --panel: #0f1620;
+            --text: #e6edf3;
+            --muted: #9aa4af;
+            --border: rgba(255, 255, 255, 0.10);
+            --accent: #7ee787;
+            --shadow: rgba(0, 0, 0, 0.45);
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            margin: 0;
+            color: var(--text);
+            background: radial-gradient(1200px 800px at 15% 10%, rgba(126, 231, 135, 0.10), transparent 55%),
+                        radial-gradient(900px 700px at 85% 20%, rgba(126, 231, 135, 0.06), transparent 55%),
+                        var(--bg);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+            background-size: 48px 48px;
+            opacity: 0.22;
+            mask-image: radial-gradient(600px 500px at 50% 10%, rgba(0, 0, 0, 0.9), transparent 70%);
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(126, 231, 135, 0.35);
+        }
+        a:hover { border-bottom-color: rgba(126, 231, 135, 0.85); }
+        a:focus-visible {
+            outline: 2px solid rgba(126, 231, 135, 0.9);
+            outline-offset: 3px;
+            border-bottom-color: transparent;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 28px 20px;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            background: rgba(11, 15, 20, 0.70);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(126, 231, 135, 0.35);
+            background: rgba(15, 22, 32, 0.65);
+            box-shadow: 0 10px 30px var(--shadow);
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.6px;
+        }
+
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .brand-title strong {
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .brand-title span {
+            color: var(--muted);
+            font-size: 12px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav a {
+            border-bottom: 1px solid transparent;
+            color: var(--muted);
+            font-size: 13px;
+            padding: 6px 0;
+        }
+        .nav a:hover { color: var(--text); }
+
+        .hero {
+            padding: 28px 0 10px;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.2px;
+        }
+
+        .kicker::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(126, 231, 135, 0.10);
+        }
+
+        h1, h2, h3 { margin: 0; font-weight: 700; }
+
+        .hero h2 {
+            margin-top: 14px;
+            font-size: 28px;
+            line-height: 1.25;
+            letter-spacing: -0.4px;
+        }
+
+        .lead {
+            margin: 14px 0 0;
+            color: var(--muted);
+            max-width: 72ch;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(126, 231, 135, 0.35);
+            background: rgba(15, 22, 32, 0.70);
+            box-shadow: 0 10px 30px var(--shadow);
+            color: var(--text);
+            font-size: 13px;
+        }
+
+        .button.secondary {
+            border-color: var(--border);
+            color: var(--muted);
+        }
+
+        .button:hover { transform: translateY(-1px); }
+        .button:active { transform: translateY(0); }
+
+        .section {
+            margin-top: 28px;
+            padding-top: 8px;
+        }
+
+        .section h3 {
+            font-size: 14px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .panel {
+            margin-top: 12px;
+            background: rgba(15, 22, 32, 0.72);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 18px 40px var(--shadow);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .project {
+            display: grid;
+            gap: 8px;
+            padding: 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: rgba(11, 15, 20, 0.35);
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .project-title {
+            font-size: 14px;
+            letter-spacing: 0.2px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(126, 231, 135, 0.25);
+            color: var(--accent);
+            font-size: 12px;
+            white-space: nowrap;
+            background: rgba(126, 231, 135, 0.08);
+        }
+
+        .project p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .principles {
+            margin: 12px 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .principles li {
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: rgba(11, 15, 20, 0.35);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .principles strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .footer {
+            margin-top: 34px;
+            border-top: 1px solid var(--border);
+            background: rgba(11, 15, 20, 0.55);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .footer-inner a {
+            color: var(--muted);
+            border-bottom-color: rgba(126, 231, 135, 0.20);
+        }
+        .footer-inner a:hover { color: var(--text); }
+
+        @media (min-width: 760px) {
+            .grid { grid-template-columns: 1fr 1fr; }
+            .hero h2 { font-size: 34px; }
+        }
     </style>
 </head>
 <body>
-    <h1>DearDoor Studio</h1>
-    <p>致力创造简单、极致的移动应用体验。</p>
-    
-    <div class="contact">
-        <h3>技术支持 (Support)</h3>
-        <p>遇到问题？请通过邮件联系我们：</p>
-        <p><strong>support@deardoor.com</strong> (请替换为你的真实邮箱)</p>
-    </div>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <div class="brand-mark">DD</div>
+                <div class="brand-title">
+                    <strong>DearDoor Studio</strong>
+                    <span>Shipping ideas into reality · Since 2026</span>
+                </div>
+            </div>
+            <nav class="nav" aria-label="Primary">
+                <a href="#projects">Projects</a>
+                <a href="#principles">Principles</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-    <footer>
-        <p>&copy; 2026 DearDoor Studio. <a href="/app-ads.txt">app-ads.txt</a></p>
+    <main class="container">
+        <section class="hero">
+            <div class="kicker">Personal lab · Build / Learn / Ship</div>
+            <h2>Turn ideas into apps. Use the process to grow.</h2>
+            <p class="lead">
+                DearDoor Studio is my home base for building a series of apps and web tools starting in 2026.
+                I use small, real products to practice unity of knowledge and action: learn, implement, iterate.
+            </p>
+            <div class="actions">
+                <a class="button" href="#projects">Browse projects</a>
+                <a class="button secondary" href="mailto:support@deardoor.com">Email support@deardoor.com</a>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h3>Projects</h3>
+            <div class="panel">
+                <div class="grid">
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-title">No More Smoke</div>
+                            <div class="badge">policy</div>
+                        </div>
+                        <p>A tiny habit companion focused on quitting smoking.</p>
+                        <div class="project-links">
+                            <a href="/no-more-smoke/zh-Hans/privacy.html">Privacy policy</a>
+                        </div>
+                    </article>
+
+                    <article class="project">
+                        <div class="project-header">
+                            <div class="project-title">Next apps</div>
+                            <div class="badge">soon</div>
+                        </div>
+                        <p>This page will become the entry point to everything I ship.</p>
+                        <div class="project-links">
+                            <a href="#contact">Suggest an idea</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="principles" class="section">
+            <h3>Principles</h3>
+            <ul class="principles">
+                <li><strong>Ship small.</strong> Prefer simple, working releases over perfect plans.</li>
+                <li><strong>Build for real life.</strong> Tools that reduce friction and keep momentum.</li>
+                <li><strong>Stay curious.</strong> Explore, measure, learn, then refactor with intent.</li>
+                <li><strong>Own the craft.</strong> Clean interfaces, readable code, and steady iteration.</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="section">
+            <h3>Contact</h3>
+            <div class="panel">
+                <p>Support & collaboration: <a href="mailto:support@deardoor.com">support@deardoor.com</a></p>
+                <p>Ad network verification: <a href="/app-ads.txt">app-ads.txt</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>© 2026 DearDoor Studio</div>
+            <div>
+                <a href="#projects">Projects</a> ·
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
