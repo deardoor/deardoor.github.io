@@ -3,10 +3,453 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>I'm Smoke Free</title>
+    <title>I'm Smoke-Free – Quit Instantly. Quit Forever.</title>
+    <meta name="description" content="I'm Smoke-Free is a minimalist quit-smoking companion built on one principle: Quit Instantly + Quit Forever. Track time, money saved, and science-based recovery milestones.">
+    <style>
+        :root {
+            --bg: #05070a;
+            --panel: #0e141d;
+            --text: #e6edf3;
+            --muted: #9aa4af;
+            --accent: #7ee787;
+            --accent-soft: rgba(126, 231, 135, 0.09);
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: rgba(0, 0, 0, 0.55);
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(900px 700px at 10% 0%, rgba(126, 231, 135, 0.10), transparent 60%),
+                radial-gradient(700px 600px at 90% 0%, rgba(126, 231, 135, 0.06), transparent 60%),
+                var(--bg);
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 52px 52px;
+            opacity: 0.22;
+            mix-blend-mode: screen;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .page {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 28px 20px 40px;
+            position: relative;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(126, 231, 135, 0.40);
+            background: rgba(6, 10, 16, 0.9);
+            box-shadow: 0 14px 30px var(--shadow);
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-text strong {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-text span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(5, 7, 10, 0.8);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr);
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        @media (min-width: 880px) {
+            .hero {
+                grid-template-columns: minmax(0, 3fr) minmax(0, 2.7fr);
+            }
+        }
+
+        .hero-main {
+            padding: 20px 18px 18px;
+            border-radius: 18px;
+            background: rgba(6, 10, 16, 0.9);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 40px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .kicker-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        h1 {
+            margin: 14px 0 6px;
+            font-size: 28px;
+            letter-spacing: -0.02em;
+        }
+
+        .subline {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .quote {
+            margin: 14px 0;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(8, 12, 18, 1);
+            border: 1px solid rgba(126, 231, 135, 0.25);
+            font-size: 13px;
+        }
+
+        .quote-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .quote-body {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            border: 1px solid rgba(126, 231, 135, 0.45);
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(126, 231, 135, 0.18), rgba(10, 15, 22, 1));
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+
+        .btn.secondary {
+            border-color: var(--border);
+            background: rgba(8, 12, 18, 0.95);
+            color: var(--muted);
+        }
+
+        .btn span {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .hero-aside {
+            display: grid;
+            gap: 14px;
+        }
+
+        .card {
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(6, 10, 16, 0.92);
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 32px var(--shadow);
+        }
+
+        .card h2 {
+            margin: 0 0 4px;
+            font-size: 14px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .card p {
+            margin: 0 0 8px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .screens {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .screens img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: block;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+            background: #020308;
+        }
+
+        .features {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 780px) {
+            .features {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .feature-list,
+        .contract-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .feature-list li + li,
+        .contract-list li + li {
+            margin-top: 4px;
+        }
+
+        .feature-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer {
+            margin-top: 26px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .footer a {
+            color: var(--muted);
+        }
+        .footer a:hover {
+            color: var(--accent);
+        }
+    </style>
 </head>
 <body>
-    <h1>I'm Smoke Free</h1>
-    <p>This page is intentionally minimal. Content will be added later.</p>
+    <div class="page">
+        <header class="top-bar">
+            <div class="brand">
+                <div class="brand-mark">ISF</div>
+                <div class="brand-text">
+                    <strong>I'M SMOKE-FREE</strong>
+                    <span>Quit Instantly · Quit Forever</span>
+                </div>
+            </div>
+            <div class="top-links">
+                <span class="pill">11 years smoke-free · Real experience, not theory.</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-main">
+                    <div class="kicker">
+                        <div class="kicker-dot"></div>
+                        PERSONAL QUIT CONTRACT
+                    </div>
+                    <h1>The 11-Year Truth: Quit Instantly + Quit Forever.</h1>
+                    <p class="subline">
+                        I failed to quit countless times. I even stayed smoke-free for six months once, only to relapse.
+                        The breakthrough came when I closed every “gradual reduction” backdoor and committed to one rule:
+                        Quit Instantly. Quit Forever.
+                    </p>
+
+                    <div class="quote">
+                        <div class="quote-title">The Tobacco-Anchored Contract</div>
+                        <div class="quote-body">
+                            No complex subscriptions. No vague promises. I'm Smoke-Free anchors its value to the habit
+                            you are leaving behind, turning your last pack into a line in the sand.
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a class="btn" href="#features">
+                            Get the core method
+                            <span>Quit Instantly + Quit Forever</span>
+                        </a>
+                        <a class="btn secondary" href="privacy.html">
+                            Privacy policy
+                            <span>No account · Local data only</span>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero-aside">
+                    <div class="card">
+                        <h2>App Preview</h2>
+                        <p>A focused dashboard for your liberation clock.</p>
+                        <div class="screens">
+                            <img src="screens/1.jpg" alt="I'm Smoke-Free screenshot 1">
+                            <img src="screens/2.jpg" alt="I'm Smoke-Free screenshot 2">
+                        </div>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="features" class="features">
+                <div>
+                    <div class="section-title">Core Features</div>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-label">The Sacred Clock.</span>
+                            Track your smoke-free time down to the millisecond. Every second is a victory.
+                        </li>
+                        <li>
+                            <span class="feature-label">Wealth & Life Recovery.</span>
+                            Real-time visualization of money saved and estimated life expectancy regained.
+                        </li>
+                        <li>
+                            <span class="feature-label">Science-Based Health Milestones.</span>
+                            Inspired by WHO and long-term recovery data, follow the day-by-day recovery
+                            of your heart, lungs, and senses.
+                        </li>
+                        <li>
+                            <span class="feature-label">A Pure Environment.</span>
+                            Once unlocked, enjoy a completely ad-free, focused experience to keep your mind clear.
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="section-title">The Contract Model</div>
+                    <ul class="contract-list">
+                        <li>
+                            <span class="feature-label">Permanent Unlock (The Last Pack).</span>
+                            One-time purchase, roughly equal to the cost of a single pack of cigarettes
+                            in your region. Let this be the last tobacco-related expense of your life.
+                        </li>
+                        <li>
+                            <span class="feature-label">The Discipline (One Single Cigarette).</span>
+                            If you break your promise—even for a single puff—resetting your timer is designed
+                            to carry a small but meaningful cost (for example, the price of one cigarette
+                            or a short reflective ad). This minor friction is a psychological barrier that
+                            keeps you on the path when your willpower wavers.
+                        </li>
+                        <li>
+                            <span class="feature-label">No Gradual Reduction.</span>
+                            I'm Smoke-Free is built around one principle: stop giving your addiction exit routes.
+                            No tapering illusions, no “maybe later”. Just a clear, honest pact with yourself.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div>© 2026 DearDoor Studio · I'm Smoke-Free</div>
+            <div>
+                Contact: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a> ·
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
