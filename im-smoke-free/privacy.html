@@ -3,108 +3,1105 @@
 <head>
     <meta charset="UTF-8">
     <title>Privacy Policy - I'm Smoke-Free</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #05070a;
+            --panel: #0e141d;
+            --text: #e6edf3;
+            --muted: #9aa4af;
+            --accent: #7ee787;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px 16px 32px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            background: radial-gradient(900px 700px at 10% 0%, rgba(126, 231, 135, 0.10), transparent 60%), var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+            background: rgba(6, 10, 16, 0.96);
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            padding: 20px 18px 22px;
+        }
+
+        h1 {
+            margin: 0 0 4px;
+            font-size: 22px;
+        }
+
+        .meta {
+            margin: 0 0 12px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .selector {
+            margin: 10px 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .lang-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .lang-link {
+            padding: 4px 9px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 13px;
+            background: transparent;
+        }
+
+        .lang-link:hover {
+            border-color: var(--border);
+        }
+
+        .lang-link.is-active {
+            border-color: var(--accent);
+            background: rgba(126, 231, 135, 0.08);
+            color: var(--text);
+        }
+
+        h2 {
+            font-size: 16px;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin: 0 0 8px;
+            font-size: 14px;
+        }
+
+        ul {
+            margin: 0 0 8px 20px;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        li + li {
+            margin-top: 4px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .policy {
+            margin-top: 6px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Privacy Policy</h1>
-    <p>Effective date: January 2, 2026</p>
+    <div class="page">
+        <h1>Privacy Policy · I'm Smoke-Free</h1>
+        <p class="meta">Effective date: January 2, 2026</p>
 
-    <p>
-        I'm Smoke-Free (the "App") is developed and operated by DearDoor Studio ("we", "us", or "our").
-        This Privacy Policy explains what information the App uses and how it is handled.
-        The App is designed as a personal tool to help you track your smoke-free time,
-        estimate money saved, and illustrate potential health benefits based on public
-        information from the World Health Organization (WHO).
-    </p>
+        <div class="selector">
+            <span>Language</span>
+            <div class="lang-links">
+                <a href="#" class="lang-link" data-lang="en">English</a>
+                <a href="#" class="lang-link" data-lang="zh-Hans">简体中文</a>
+                <a href="#" class="lang-link" data-lang="zh-Hant">繁體中文</a>
+                <a href="#" class="lang-link" data-lang="ko">한국어</a>
+                <a href="#" class="lang-link" data-lang="fr">Français</a>
+                <a href="#" class="lang-link" data-lang="es">Español (España)</a>
+                <a href="#" class="lang-link" data-lang="it">Italiano</a>
+                <a href="#" class="lang-link" data-lang="ja">日本語</a>
+                <a href="#" class="lang-link" data-lang="de">Deutsch</a>
+            </div>
+        </div>
 
-    <h2>1. What this app does</h2>
-    <p>
-        I'm Smoke-Free helps you record your quit date and smoking history, and then
-        calculates:
-    </p>
-    <ul>
-        <li>How long you have stayed smoke-free.</li>
-        <li>How much money you may have saved by not buying cigarettes.</li>
-        <li>
-            A theoretical view of health improvement milestones, inspired by WHO and
-            other public health information (for example: heart and lung benefits over time).
-        </li>
-    </ul>
+        <section class="policy" data-lang="en">
+            <p>
+                I'm Smoke-Free (the "App") is developed and operated by DearDoor Studio ("we", "us", or "our").
+                This Privacy Policy explains what information the App uses and how it is handled.
+                The App is designed as a personal tool to help you track your smoke-free time,
+                estimate money saved, and illustrate potential health benefits based on public
+                information from the World Health Organization (WHO).
+            </p>
 
-    <h2>2. Data you enter</h2>
-    <p>To provide these calculations, the App allows you to manually enter information such as:</p>
-    <ul>
-        <li>Your quit date or time you stopped smoking.</li>
-        <li>Your previous smoking habits (for example, cigarettes per day or packs per week).</li>
-        <li>Approximate price of cigarettes in your region.</li>
-        <li>Optional settings related to how the app calculates money saved and milestones.</li>
-    </ul>
-    <p>
-        All of this information is entered by you. You can review, update, or delete it at any time
-        inside the App (depending on the features available in your current version).
-    </p>
+            <h2>1. What this app does</h2>
+            <p>
+                I'm Smoke-Free helps you record your quit date and smoking history, and then
+                calculates:
+            </p>
+            <ul>
+                <li>How long you have stayed smoke-free.</li>
+                <li>How much money you may have saved by not buying cigarettes.</li>
+                <li>
+                    A theoretical view of health improvement milestones, inspired by WHO and
+                    other public health information (for example: heart and lung benefits over time).
+                </li>
+            </ul>
 
-    <h2>3. No personally identifiable information</h2>
-    <p>
-        The App is intentionally designed to work without collecting information that directly
-        identifies you. In particular:
-    </p>
-    <ul>
-        <li>We do not ask for your real name, email address, phone number, postal address, or ID number.</li>
-        <li>We do not access your contacts, photos, messages, or other personal content on your device.</li>
-        <li>We do not require you to create an account or log in.</li>
-    </ul>
+            <h2>2. Data you enter</h2>
+            <p>To provide these calculations, the App allows you to manually enter information such as:</p>
+            <ul>
+                <li>Your quit date or time you stopped smoking.</li>
+                <li>Your previous smoking habits (for example, cigarettes per day or packs per week).</li>
+                <li>Approximate price of cigarettes in your region.</li>
+                <li>Optional settings related to how the app calculates money saved and milestones.</li>
+            </ul>
+            <p>
+                All of this information is entered by you. You can review, update, or delete it at any time
+                inside the App (depending on the features available in your current version).
+            </p>
 
-    <h2>4. Where your data is stored</h2>
-    <p>
-        All data you enter in I'm Smoke-Free is stored locally on your device.
-        It is used only inside the App to perform calculations and display your progress.
-        We do not operate separate servers that receive or store your personal progress data.
-    </p>
-    <p>
-        Depending on your device settings, your data may be included in system-level backups
-        (for example, iCloud, Google backup, or other vendor backup services).
-        Those backups are controlled by your operating system provider, and their privacy
-        policies apply to that backup process.
-    </p>
+            <h2>3. No personally identifiable information</h2>
+            <p>
+                The App is intentionally designed to work without collecting information that directly
+                identifies you. In particular:
+            </p>
+            <ul>
+                <li>We do not ask for your real name, email address, phone number, postal address, or ID number.</li>
+                <li>We do not access your contacts, photos, messages, or other personal content on your device.</li>
+                <li>We do not require you to create an account or log in.</li>
+            </ul>
 
-    <h2>5. Analytics, advertising, and third-party services</h2>
-    <p>
-        The current version of I'm Smoke-Free does not include in-app advertising and does not
-        integrate third-party analytics SDKs that track you across apps or websites.
-    </p>
-    <p>
-        If this changes in a future version, we will update this Privacy Policy and clearly
-        describe what information is collected, for what purpose, and how you can control it.
-    </p>
+            <h2>4. Where your data is stored</h2>
+            <p>
+                All data you enter in I'm Smoke-Free is stored locally on your device.
+                It is used only inside the App to perform calculations and display your progress.
+                We do not operate separate servers that receive or store your personal progress data.
+            </p>
+            <p>
+                Depending on your device settings, your data may be included in system-level backups
+                (for example, iCloud, Google backup, or other vendor backup services).
+                Those backups are controlled by your operating system provider, and their privacy
+                policies apply to that backup process.
+            </p>
 
-    <h2>6. Data retention and deletion</h2>
-    <p>
-        Your smoke-free history and settings are kept on your device for as long as you use the App.
-        You can usually reset your data from within the App (if a reset option is available),
-        or remove all app data by uninstalling the App from your device.
-    </p>
+            <h2>5. Analytics, advertising, and third-party services</h2>
+            <p>
+                The current version of I'm Smoke-Free does not include in-app advertising and does not
+                integrate third-party analytics SDKs that track you across apps or websites.
+            </p>
+            <p>
+                If this changes in a future version, we will update this Privacy Policy and clearly
+                describe what information is collected, for what purpose, and how you can control it.
+            </p>
 
-    <h2>7. Children</h2>
-    <p>
-        I'm Smoke-Free is a utility app focused on health-related self-tracking for adults.
-        It is not designed for children under the age that applies in your region
-        (for example, under 13 years old in many countries).
-    </p>
+            <h2>6. Data retention and deletion</h2>
+            <p>
+                Your smoke-free history and settings are kept on your device for as long as you use the App.
+                You can usually reset your data from within the App (if a reset option is available),
+                or remove all app data by uninstalling the App from your device.
+            </p>
 
-    <h2>8. Changes to this policy</h2>
-    <p>
-        We may update this Privacy Policy from time to time to reflect changes in the App
-        or in applicable laws. When we make important changes, we will update the "Effective date"
-        at the top of this page. In some cases, we may also notify you inside the App.
-    </p>
+            <h2>7. Children</h2>
+            <p>
+                I'm Smoke-Free is a utility app focused on health-related self-tracking for adults.
+                It is not designed for children under the age that applies in your region
+                (for example, under 13 years old in many countries).
+            </p>
 
-    <h2>9. Contact</h2>
-    <p>
-        If you have any questions, feedback, or privacy-related requests about I'm Smoke-Free,
-        you can contact us at:
-    </p>
-    <p>
-        Email: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
-    </p>
-    </body>
+            <h2>8. Changes to this policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time to reflect changes in the App
+                or in applicable laws. When we make important changes, we will update the "Effective date"
+                at the top of this page. In some cases, we may also notify you inside the App.
+            </p>
+
+            <h2>9. Contact</h2>
+            <p>
+                If you have any questions, feedback, or privacy-related requests about I'm Smoke-Free,
+                you can contact us at:
+            </p>
+            <p>
+                Email: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="zh-Hans" style="display:none">
+            <p>
+                “I'm Smoke-Free”（下称“本应用”）由 DearDoor Studio 开发和运营（下称“我们”）。
+                本隐私政策说明本应用会使用哪些信息以及如何处理这些信息。
+                本应用旨在帮助你记录无烟时间、估算节省的金钱，并基于世界卫生组织（WHO）的公开资料展示潜在的健康改善里程碑。
+            </p>
+
+            <h2>1. 本应用的功能</h2>
+            <p>
+                本应用用于记录你的戒烟起始时间和吸烟历史，并基于这些信息计算：
+            </p>
+            <ul>
+                <li>你已经保持无烟状态的时长。</li>
+                <li>由于不再购买香烟而可能节省的金钱。</li>
+                <li>
+                    参考 WHO 及其他公共健康信息的理论健康改善进度，例如心肺功能和感官随时间恢复的情况。
+                </li>
+            </ul>
+
+            <h2>2. 你输入的数据</h2>
+            <p>为实现上述功能，本应用允许你手动输入包括但不限于以下信息：</p>
+            <ul>
+                <li>戒烟日期或你停止吸烟的时间。</li>
+                <li>以往的吸烟习惯（例如：每天几支或每周几包）。</li>
+                <li>你所在地区香烟的大致价格。</li>
+                <li>与计算节省金额和健康里程碑相关的可选设置。</li>
+            </ul>
+            <p>
+                以上信息均由你自行输入，你可以根据当前版本的功能在应用内查看、更新或删除这些数据。
+            </p>
+
+            <h2>3. 不收集可识别个人身份的信息</h2>
+            <p>
+                本应用在设计时刻意避免收集可直接识别你个人身份的信息，包括但不限于：
+            </p>
+            <ul>
+                <li>我们不会要求你的真实姓名、电子邮箱、电话号码、邮寄地址或证件号码。</li>
+                <li>我们不会访问你设备中的通讯录、照片、短信或其他个人内容。</li>
+                <li>我们不会要求你创建账户或登录即可使用本应用的核心功能。</li>
+            </ul>
+
+            <h2>4. 数据存储位置</h2>
+            <p>
+                你在本应用中输入的所有数据都会存储在你的本地设备上。
+                这些数据仅用于在应用内进行计算并向你展示进度，我们不会在自有服务器上接收或存储你的戒烟进度数据。
+            </p>
+            <p>
+                根据你的设备设置，这些数据可能会被包含在系统级备份中（例如 iCloud、Google 备份或其他厂商提供的备份服务）。
+                这些备份由操作系统或服务提供商控制，其隐私政策适用于相应的备份行为。
+            </p>
+
+            <h2>5. 分析、广告与第三方服务</h2>
+            <p>
+                当前版本的本应用不包含应用内广告，也未集成会在不同应用或网站之间跟踪你的第三方分析 SDK。
+            </p>
+            <p>
+                如未来版本发生变化，我们会更新本隐私政策，并清晰说明收集哪些信息、用途是什么，以及你可以如何进行控制。
+            </p>
+
+            <h2>6. 数据保留与删除</h2>
+            <p>
+                在你使用本应用期间，你的戒烟历史和相关设置会保留在你的设备上。
+                在某些版本中，你可以在应用内重置数据；你也可以通过卸载本应用的方式删除所有应用数据。
+            </p>
+
+            <h2>7. 儿童保护</h2>
+            <p>
+                本应用面向成年用户，用于健康相关的自我跟踪。
+                它并非专为未成年人设计，你所在地区适用法律对儿童年龄的规定（例如 13 周岁以下）同样适用。
+            </p>
+
+            <h2>8. 本政策的变更</h2>
+            <p>
+                我们可能会根据应用功能或适用法律的变化不时更新本隐私政策。
+                当本政策发生重要变更时，我们会更新本页顶部的“生效日期”，并在必要时在应用内进行提示。
+            </p>
+
+            <h2>9. 联系我们</h2>
+            <p>
+                如你对本应用或本隐私政策有任何问题、建议或与隐私相关的请求，可以通过以下方式联系我们：
+            </p>
+            <p>
+                电子邮箱：<a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="zh-Hant" style="display:none">
+            <p>
+                「I'm Smoke-Free」（下稱「本應用」）由 DearDoor Studio 開發並營運（下稱「我們」）。
+                本隱私政策說明本應用會使用哪些資訊，以及我們如何處理這些資訊。
+                本應用的目的，是協助你記錄無菸時間、估算節省的金錢，並根據世界衛生組織（WHO）的公開資料，展示可能的健康改善里程碑。
+            </p>
+
+            <h2>1. 本應用的功能</h2>
+            <p>
+                本應用用於記錄你的戒菸起始時間與吸菸歷史，並根據這些資訊計算：
+            </p>
+            <ul>
+                <li>你已經維持無菸狀態的時間長度。</li>
+                <li>因不再購買香菸而可能節省的金錢。</li>
+                <li>
+                    參考 WHO 及其他公共健康資訊的理論健康恢復進度，例如心肺功能與感官隨時間恢復的情況。
+                </li>
+            </ul>
+
+            <h2>2. 你輸入的資料</h2>
+            <p>為實現上述功能，本應用允許你手動輸入（包括但不限於）下列資料：</p>
+            <ul>
+                <li>戒菸日期或你停止吸菸的時間。</li>
+                <li>過去的吸菸習慣（例如：每天幾支或每週幾包）。</li>
+                <li>你所在地區香菸的大致價格。</li>
+                <li>與計算節省金額及健康里程碑相關的選項設定。</li>
+            </ul>
+            <p>
+                以上資料皆由你自行輸入，你可以依照目前版本提供的功能，在應用中檢視、更新或刪除這些資料。
+            </p>
+
+            <h2>3. 不收集可識別個人身分的資訊</h2>
+            <p>
+                本應用在設計時即刻意避免收集可直接識別你個人身分的資訊，包括但不限於：
+            </p>
+            <ul>
+                <li>我們不會要求你的真實姓名、電子郵件、電話號碼、郵寄地址或身分證號。</li>
+                <li>我們不會存取你裝置中的通訊錄、相片、訊息或其他個人內容。</li>
+                <li>我們不要求你註冊帳號或登入，即可使用本應用的核心功能。</li>
+            </ul>
+
+            <h2>4. 資料儲存位置</h2>
+            <p>
+                你在本應用中輸入的所有資料皆儲存在你的本機裝置上。
+                這些資料僅用於在應用內進行計算並顯示你的進度，我們不會在自有伺服器上接收或儲存你的戒菸進度資料。
+            </p>
+            <p>
+                依照你的裝置設定，這些資料有可能被包含在系統層級的備份中（例如 iCloud、Google 備份或其他廠商備份服務）。
+                這些備份由作業系統或服務提供者管理，其隱私權政策適用於相關備份行為。
+            </p>
+
+            <h2>5. 分析、廣告與第三方服務</h2>
+            <p>
+                目前版本的本應用不包含應用程式內廣告，也未整合會在不同應用或網站之間追蹤你的第三方分析 SDK。
+            </p>
+            <p>
+                若未來版本有所變更，我們會更新本隱私政策，並清楚說明所收集的資料、用途以及你可採取的控制方式。
+            </p>
+
+            <h2>6. 資料保存與刪除</h2>
+            <p>
+                在你使用本應用期間，你的戒菸歷史與相關設定會保留在你的裝置上。
+                在部分版本中，你可以於應用內重設資料；你也可以透過解除安裝本應用，刪除所有應用資料。
+            </p>
+
+            <h2>7. 兒童與未成年人</h2>
+            <p>
+                本應用主要供成年使用者進行健康相關的自我追蹤。
+                本應用並非專為兒童或未成年人設計，你所在地區關於兒童年齡之相關法律規定（例如 13 歲以下）同樣適用。
+            </p>
+
+            <h2>8. 本政策之變更</h2>
+            <p>
+                我們可能會因應應用功能或適用法律之變化，不定期更新本隱私政策。
+                當本政策有重大調整時，我們會更新本頁頂端的「生效日期」，並在必要時於應用內提示你。
+            </p>
+
+            <h2>9. 聯絡我們</h2>
+            <p>
+                若你對本應用或本隱私政策有任何問題、建議或隱私相關需求，歡迎透過下列方式與我們聯繫：
+            </p>
+            <p>
+                電子郵件：<a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="ko" style="display:none">
+            <p>
+                "I'm Smoke-Free"(이하 "앱")는 DearDoor Studio(이하 "당사")가 개발 및 운영합니다.
+                이 개인정보 처리방침은 앱이 어떤 정보를 사용하고, 그 정보를 어떻게 처리하는지 설명합니다.
+                이 앱은 사용자가 금연 기간을 추적하고, 절약한 금액을 추정하며, 세계보건기구(WHO)의 공개 자료를 기반으로
+                이론적인 건강 개선 이정표를 보여 주기 위한 개인용 도구입니다.
+            </p>
+
+            <h2>1. 앱의 역할</h2>
+            <p>
+                I'm Smoke-Free는 사용자의 금연 시작 시점과 과거 흡연 습관을 기록하고, 다음과 같은 항목을 계산합니다.
+            </p>
+            <ul>
+                <li>지금까지 유지해 온 금연 기간.</li>
+                <li>담배를 구매하지 않음으로써 절약했을 것으로 예상되는 금액.</li>
+                <li>
+                    WHO 및 기타 공중 보건 정보를 참고한 이론적인 건강 회복 이정표
+                    (예: 심장과 폐 기능, 감각의 회복 과정).
+                </li>
+            </ul>
+
+            <h2>2. 사용자가 입력하는 데이터</h2>
+            <p>위 기능을 위해 앱은 사용자가 다음과 같은 정보를 수동으로 입력할 수 있도록 합니다.</p>
+            <ul>
+                <li>금연을 시작한 날짜 또는 시간을 포함한 금연 시작 시점.</li>
+                <li>과거 흡연 습관(예: 하루 몇 개비, 일주일에 몇 갑 등).</li>
+                <li>사용자 지역의 담배 대략적인 가격.</li>
+                <li>절약 금액 및 건강 이정표 계산과 관련된 선택적 설정 값.</li>
+            </ul>
+            <p>
+                이러한 정보는 모두 사용자가 직접 입력하며, 현재 앱 버전이 제공하는 기능 내에서
+                언제든지 확인·수정·삭제할 수 있습니다.
+            </p>
+
+            <h2>3. 개인을 식별할 수 있는 정보의 미수집</h2>
+            <p>
+                이 앱은 사용자를 직접 식별할 수 있는 정보를 수집하지 않도록 설계되었습니다. 예를 들어:
+            </p>
+            <ul>
+                <li>실명, 이메일 주소, 전화번호, 우편 주소, 신분증 번호 등을 요구하지 않습니다.</li>
+                <li>연락처, 사진, 메시지 등 기기 내 개인 콘텐츠에 접근하지 않습니다.</li>
+                <li>앱의 핵심 기능을 사용하기 위해 계정 생성이나 로그인을 요구하지 않습니다.</li>
+            </ul>
+
+            <h2>4. 데이터 저장 위치</h2>
+            <p>
+                사용자가 I'm Smoke-Free에 입력하는 모든 데이터는 사용자 기기 내에 로컬로 저장됩니다.
+                이 데이터는 앱 내부에서 계산을 수행하고 진행 상황을 표시하는 데에만 사용되며,
+                당사가 운영하는 별도의 서버로 전송되거나 저장되지 않습니다.
+            </p>
+            <p>
+                기기 설정에 따라 이 데이터는 iCloud, Google 백업 등 시스템 수준 백업에 포함될 수 있습니다.
+                이러한 백업은 운영체제 또는 서비스 제공자가 관리하며, 해당 제공사의 개인정보 처리방침이 적용됩니다.
+            </p>
+
+            <h2>5. 분석, 광고 및 제3자 서비스</h2>
+            <p>
+                현재 버전의 앱은 인앱 광고를 포함하지 않으며, 다른 앱이나 웹사이트 간 사용자를 추적하는
+                제3자 분석 SDK를 통합하지 않습니다.
+            </p>
+            <p>
+                향후 버전에서 변경 사항이 발생할 경우, 본 개인정보 처리방침을 업데이트하고,
+                어떤 정보가 어떤 목적으로 수집되는지, 그리고 사용자가 어떻게 이를 제어할 수 있는지 명확히 알리겠습니다.
+            </p>
+
+            <h2>6. 데이터 보관 및 삭제</h2>
+            <p>
+                사용자의 금연 기록과 설정은 앱을 사용하는 동안 기기에 보관됩니다.
+                일부 버전에서는 앱 내에서 데이터를 초기화할 수 있고, 앱을 삭제하면 모든 앱 데이터가 제거됩니다.
+            </p>
+
+            <h2>7. 어린이 및 미성년자</h2>
+            <p>
+                I'm Smoke-Free는 성인을 대상으로 한 건강 관련 자기 추적 도구입니다.
+                많은 국가에서 만 13세 미만 등으로 정의되는 아동을 대상으로 설계된 서비스가 아닙니다.
+            </p>
+
+            <h2>8. 정책 변경</h2>
+            <p>
+                앱 기능 또는 관련 법령의 변경에 따라, 당사는 본 개인정보 처리방침을 수시로 수정할 수 있습니다.
+                중요한 변경이 있을 경우, 본 페이지 상단의 "시행일"을 업데이트하고,
+                필요한 경우 앱 내 알림을 제공할 수 있습니다.
+            </p>
+
+            <h2>9. 연락처</h2>
+            <p>
+                I'm Smoke-Free 또는 본 개인정보 처리방침에 관해 문의, 의견, 개인정보 관련 요청이 있는 경우,
+                아래 이메일로 연락하실 수 있습니다.
+            </p>
+            <p>
+                이메일: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="fr" style="display:none">
+            <p>
+                L'application "I'm Smoke-Free" (ci-après "l’App") est développée et exploitée par DearDoor Studio
+                ("nous"). La présente Politique de confidentialité explique quelles informations sont utilisées
+                par l’App et comment elles sont traitées. L’App est conçue comme un outil personnel pour suivre
+                votre temps sans tabac, estimer l’argent économisé et illustrer les bénéfices de santé potentiels
+                sur la base d’informations publiques de l’Organisation mondiale de la santé (OMS).
+            </p>
+
+            <h2>1. Objet de l’application</h2>
+            <p>
+                I'm Smoke-Free vous aide à enregistrer votre date d’arrêt du tabac et vos habitudes passées,
+                puis à calculer :
+            </p>
+            <ul>
+                <li>La durée pendant laquelle vous êtes resté sans fumer.</li>
+                <li>L’argent que vous avez potentiellement économisé en n’achetant plus de cigarettes.</li>
+                <li>
+                    Une vision théorique des étapes d’amélioration de votre santé, inspirée par l’OMS
+                    et d’autres sources de santé publique (par exemple, la récupération du cœur et des poumons).
+                </li>
+            </ul>
+
+            <h2>2. Données que vous saisissez</h2>
+            <p>Pour fournir ces fonctionnalités, l’App vous permet de saisir manuellement des informations telles que :</p>
+            <ul>
+                <li>Votre date (ou heure) d’arrêt du tabac.</li>
+                <li>Vos anciennes habitudes de consommation (par exemple, nombre de cigarettes par jour ou paquets par semaine).</li>
+                <li>Le prix approximatif d’un paquet de cigarettes dans votre région.</li>
+                <li>Des paramètres facultatifs liés au calcul de l’argent économisé et des jalons de santé.</li>
+            </ul>
+            <p>
+                Toutes ces informations sont saisies par vous. Vous pouvez les consulter, les modifier ou les supprimer
+                dans l’App, selon les fonctionnalités disponibles dans votre version.
+            </p>
+
+            <h2>3. Aucune donnée personnellement identifiable</h2>
+            <p>
+                L’App est conçue pour fonctionner sans collecter d’informations permettant de vous identifier directement.
+                En particulier :
+            </p>
+            <ul>
+                <li>Nous ne demandons pas votre nom réel, votre adresse e-mail, votre numéro de téléphone, votre adresse postale ou votre numéro d’identification.</li>
+                <li>Nous n’accédons pas à vos contacts, photos, messages ou autres contenus personnels sur votre appareil.</li>
+                <li>Nous ne vous demandons pas de créer un compte ou de vous connecter pour utiliser les fonctionnalités principales.</li>
+            </ul>
+
+            <h2>4. Lieu de stockage des données</h2>
+            <p>
+                Toutes les données que vous saisissez dans I'm Smoke-Free sont stockées localement sur votre appareil.
+                Elles sont utilisées uniquement dans l’App pour effectuer des calculs et afficher votre progression.
+                Nous n’exploitons pas de serveurs séparés pour recevoir ou conserver vos données de progression.
+            </p>
+            <p>
+                Selon les paramètres de votre appareil, ces données peuvent être incluses dans des sauvegardes système
+                (par exemple iCloud, sauvegarde Google ou autres services de sauvegarde).
+                Ces sauvegardes sont gérées par le fournisseur de votre système d’exploitation,
+                dont la politique de confidentialité s’applique.
+            </p>
+
+            <h2>5. Analyses, publicité et services tiers</h2>
+            <p>
+                La version actuelle d'I’m Smoke-Free ne contient pas de publicité intégrée
+                et n’intègre pas de SDK d’analyse tiers suivant votre activité entre applications ou sites web.
+            </p>
+            <p>
+                Si cela change dans une future version, nous mettrons à jour la présente Politique de confidentialité
+                et expliquerons clairement quelles informations sont collectées, dans quel but et comment vous pouvez les contrôler.
+            </p>
+
+            <h2>6. Conservation et suppression des données</h2>
+            <p>
+                Votre historique de sevrage tabagique et vos paramètres sont conservés sur votre appareil
+                tant que vous utilisez l’App. Dans certaines versions, vous pouvez réinitialiser vos données
+                dans l’App ; vous pouvez également supprimer toutes les données en désinstallant l’App.
+            </p>
+
+            <h2>7. Enfants</h2>
+            <p>
+                I’m Smoke-Free est un outil d’auto‑suivi de santé destiné aux adultes.
+                Il n’est pas conçu pour les enfants au sens des lois applicables dans votre pays
+                (par exemple, les personnes de moins de 13 ans dans de nombreux pays).
+            </p>
+
+            <h2>8. Modifications de la présente politique</h2>
+            <p>
+                Nous pouvons mettre à jour cette Politique de confidentialité pour refléter l’évolution de l’App
+                ou des lois applicables. En cas de modification importante, nous mettrons à jour la "Date d’effet"
+                indiquée en haut de cette page et, dans certains cas, nous pourrons également vous en informer dans l’App.
+            </p>
+
+            <h2>9. Contact</h2>
+            <p>
+                Pour toute question, remarque ou demande relative à la confidentialité concernant I'm Smoke-Free,
+                vous pouvez nous contacter à l’adresse suivante :
+            </p>
+            <p>
+                E-mail : <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="es" style="display:none">
+            <p>
+                La aplicación "I'm Smoke-Free" (en adelante, la "App") es desarrollada y operada por DearDoor Studio
+                ("nosotros"). Esta Política de Privacidad explica qué información utiliza la App y cómo se trata.
+                La App está diseñada como una herramienta personal para ayudarte a registrar tu tiempo sin fumar,
+                estimar el dinero ahorrado y mostrar posibles mejoras de salud basadas en información pública
+                de la Organización Mundial de la Salud (OMS).
+            </p>
+
+            <h2>1. Qué hace esta aplicación</h2>
+            <p>
+                I'm Smoke-Free te ayuda a registrar la fecha en la que dejaste de fumar y tu historial de consumo,
+                y a calcular:
+            </p>
+            <ul>
+                <li>El tiempo que has permanecido sin fumar.</li>
+                <li>El dinero que podrías haber ahorrado al no comprar cigarrillos.</li>
+                <li>
+                    Una visión teórica de los hitos de mejora de la salud, inspirada en la OMS
+                    y otras fuentes de salud pública (por ejemplo, la recuperación del corazón y los pulmones).
+                </li>
+            </ul>
+
+            <h2>2. Datos que introduces</h2>
+            <p>Para ofrecer estas funciones, la App te permite introducir manualmente información como:</p>
+            <ul>
+                <li>La fecha u hora en la que dejaste de fumar.</li>
+                <li>Tus hábitos de consumo anteriores (por ejemplo, cigarrillos al día o paquetes por semana).</li>
+                <li>El precio aproximado de los cigarrillos en tu región.</li>
+                <li>Opciones relacionadas con el cálculo del dinero ahorrado y los hitos de salud.</li>
+            </ul>
+            <p>
+                Todos estos datos son introducidos por ti. Puedes consultarlos, modificarlos o eliminarlos
+                desde la App, según las funcionalidades disponibles en tu versión.
+            </p>
+
+            <h2>3. Sin datos de identificación personal</h2>
+            <p>
+                La App está diseñada para funcionar sin recopilar información que te identifique directamente.
+                En particular:
+            </p>
+            <ul>
+                <li>No solicitamos tu nombre real, correo electrónico, número de teléfono, dirección postal ni documento de identidad.</li>
+                <li>No accedemos a tus contactos, fotos, mensajes u otros contenidos personales de tu dispositivo.</li>
+                <li>No es necesario crear una cuenta ni iniciar sesión para utilizar las funciones principales.</li>
+            </ul>
+
+            <h2>4. Dónde se almacenan tus datos</h2>
+            <p>
+                Todos los datos que introduces en I'm Smoke-Free se almacenan localmente en tu dispositivo.
+                Se utilizan únicamente dentro de la App para realizar cálculos y mostrar tu progreso.
+                No operamos servidores separados que reciban o almacenen tus datos de progreso.
+            </p>
+            <p>
+                Según la configuración de tu dispositivo, estos datos pueden incluirse en copias de seguridad de sistema
+                (por ejemplo, iCloud, copia de seguridad de Google u otros servicios de copia de seguridad).
+                Dichas copias de seguridad son gestionadas por el proveedor de tu sistema operativo,
+                cuya política de privacidad resulta aplicable.
+            </p>
+
+            <h2>5. Analítica, publicidad y servicios de terceros</h2>
+            <p>
+                La versión actual de I'm Smoke-Free no incluye publicidad integrada ni integra SDK de analítica de terceros
+                que te sigan entre aplicaciones o sitios web.
+            </p>
+            <p>
+                Si esto cambia en una versión futura, actualizaremos esta Política de Privacidad y explicaremos claramente
+                qué datos se recopilan, con qué finalidad y cómo puedes controlarlos.
+            </p>
+
+            <h2>6. Conservación y eliminación de datos</h2>
+            <p>
+                Tu historial de consumo y tus ajustes se conservan en tu dispositivo mientras utilices la App.
+                En algunas versiones podrás restablecer los datos desde la App; también puedes eliminar todos los datos
+                desinstalando la aplicación.
+            </p>
+
+            <h2>7. Menores</h2>
+            <p>
+                I'm Smoke-Free es una herramienta de auto-seguimiento de la salud dirigida a adultos.
+                No está pensada para niños según la legislación aplicable en tu país
+                (por ejemplo, menores de 13 años en muchos países).
+            </p>
+
+            <h2>8. Cambios en esta política</h2>
+            <p>
+                Podemos actualizar esta Política de Privacidad para reflejar cambios en la App
+                o en la normativa aplicable. En caso de cambios importantes, actualizaremos la
+                "Fecha de entrada en vigor" indicada al inicio de esta página y, en algunos casos,
+                podremos informarte también dentro de la App.
+            </p>
+
+            <h2>9. Contacto</h2>
+            <p>
+                Si tienes preguntas, comentarios o solicitudes relacionadas con la privacidad en I'm Smoke-Free,
+                puedes ponerte en contacto con nosotros en:
+            </p>
+            <p>
+                Correo electrónico: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="it" style="display:none">
+            <p>
+                L’applicazione "I'm Smoke-Free" (di seguito, "App") è sviluppata e gestita da DearDoor Studio
+                ("noi"). La presente Informativa sulla privacy descrive quali informazioni vengono utilizzate
+                dall’App e come vengono trattate. L’App è progettata come strumento personale per aiutarti
+                a tenere traccia del tempo trascorso senza fumare, stimare il denaro risparmiato e mostrare
+                i potenziali benefici per la salute sulla base di informazioni pubbliche dell’Organizzazione
+                Mondiale della Sanità (OMS).
+            </p>
+
+            <h2>1. Funzione dell’app</h2>
+            <p>
+                I'm Smoke-Free ti aiuta a registrare la data in cui hai smesso di fumare e le tue abitudini passate,
+                e a calcolare:
+            </p>
+            <ul>
+                <li>Per quanto tempo sei rimasto senza fumare.</li>
+                <li>Il denaro che potresti aver risparmiato non acquistando sigarette.</li>
+                <li>
+                    Una rappresentazione teorica dei traguardi di miglioramento della salute,
+                    ispirata ai dati OMS e ad altre fonti di salute pubblica.
+                </li>
+            </ul>
+
+            <h2>2. Dati inseriti dall’utente</h2>
+            <p>Per fornire queste funzionalità, l’App ti consente di inserire manualmente informazioni come:</p>
+            <ul>
+                <li>La data o l’ora in cui hai smesso di fumare.</li>
+                <li>Le tue precedenti abitudini di consumo (ad esempio, sigarette al giorno o pacchetti a settimana).</li>
+                <li>Il prezzo approssimativo delle sigarette nella tua zona.</li>
+                <li>Impostazioni facoltative relative al calcolo del denaro risparmiato e dei traguardi di salute.</li>
+            </ul>
+            <p>
+                Tutti questi dati vengono inseriti da te. Puoi consultarli, aggiornarli o eliminarli in qualsiasi momento
+                dall’App, in base alle funzionalità disponibili nella versione che utilizzi.
+            </p>
+
+            <h2>3. Nessun dato personale identificabile</h2>
+            <p>
+                L’App è progettata per funzionare senza raccogliere dati che ti identifichino direttamente.
+                In particolare:
+            </p>
+            <ul>
+                <li>Non richiediamo il tuo nome reale, indirizzo e-mail, numero di telefono, indirizzo postale o numero di documento.</li>
+                <li>Non accediamo ai contatti, alle foto, ai messaggi o ad altri contenuti personali presenti sul tuo dispositivo.</li>
+                <li>Non è necessario creare un account o effettuare l’accesso per utilizzare le funzionalità principali.</li>
+            </ul>
+
+            <h2>4. Dove vengono archiviati i dati</h2>
+            <p>
+                Tutti i dati che inserisci in I'm Smoke-Free sono archiviati localmente sul tuo dispositivo.
+                Vengono utilizzati solo all’interno dell’App per effettuare i calcoli e mostrare i tuoi progressi.
+                Non gestiamo server separati che ricevano o conservino i tuoi dati di avanzamento.
+            </p>
+            <p>
+                In base alle impostazioni del dispositivo, tali dati possono essere inclusi nei backup di sistema
+                (ad esempio iCloud, backup Google o altri servizi analoghi).
+                Tali backup sono gestiti dal fornitore del sistema operativo, la cui informativa sulla privacy si applica.
+            </p>
+
+            <h2>5. Analisi, pubblicità e servizi di terzi</h2>
+            <p>
+                La versione attuale di I'm Smoke-Free non include pubblicità integrata e non integra SDK di analisi di terze parti
+                che traccino la tua attività su altre app o siti web.
+            </p>
+            <p>
+                Se in futuro ciò dovesse cambiare, aggiorneremo la presente Informativa sulla privacy
+                e spiegheremo in modo chiaro quali dati vengono raccolti, per quale scopo e come puoi controllarli.
+            </p>
+
+            <h2>6. Conservazione e cancellazione dei dati</h2>
+            <p>
+                La cronologia relativa al fumo e le impostazioni vengono conservate sul tuo dispositivo
+                per tutto il periodo in cui utilizzi l’App.
+                In alcune versioni, potrai reimpostare i dati dall’App; in alternativa, potrai eliminare tutti i dati
+                disinstallando l’applicazione.
+            </p>
+
+            <h2>7. Bambini</h2>
+            <p>
+                I'm Smoke-Free è uno strumento di auto-monitoraggio della salute destinato agli adulti.
+                Non è progettato per bambini ai sensi delle leggi applicabili nel tuo paese
+                (ad esempio, minori di 13 anni in molti Paesi).
+            </p>
+
+            <h2>8. Modifiche alla presente informativa</h2>
+            <p>
+                Potremmo aggiornare la presente Informativa sulla privacy per riflettere eventuali modifiche all’App
+                o alla normativa applicabile. In caso di modifiche sostanziali, aggiorneremo la "Data di efficacia"
+                riportata all’inizio di questa pagina e, se necessario, potremo informarti anche all’interno dell’App.
+            </p>
+
+            <h2>9. Contatti</h2>
+            <p>
+                Per domande, commenti o richieste relative alla privacy in merito a I'm Smoke-Free,
+                puoi contattarci al seguente indirizzo:
+            </p>
+            <p>
+                E-mail: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="ja" style="display:none">
+            <p>
+                「I'm Smoke-Free」（以下「本アプリ」）は DearDoor Studio（以下「当社」）が開発・運営しています。
+                本プライバシーポリシーは、本アプリがどのような情報を利用し、それをどのように取り扱うかを説明するものです。
+                本アプリは、禁煙時間の記録、節約できた金額の推定、そして世界保健機関（WHO）の公開情報に基づく
+                理論的な健康改善のマイルストーンを表示するための個人向けツールとして設計されています。
+            </p>
+
+            <h2>1. アプリの目的</h2>
+            <p>
+                I'm Smoke-Free は、あなたの禁煙開始日やこれまでの喫煙習慣を記録し、次の項目を算出します。
+            </p>
+            <ul>
+                <li>これまで維持してきた禁煙期間。</li>
+                <li>タバコを購入しなかったことで理論上節約できた金額。</li>
+                <li>
+                    WHO などの公衆衛生情報に基づいた、心肺機能や感覚の回復などの
+                    理論的な健康改善マイルストーン。
+                </li>
+            </ul>
+
+            <h2>2. ユーザーが入力するデータ</h2>
+            <p>上記の機能を提供するため、本アプリでは次のような情報を手動で入力できます。</p>
+            <ul>
+                <li>禁煙を開始した日付または時刻。</li>
+                <li>過去の喫煙習慣（例：1 日の本数、1 週間の箱数など）。</li>
+                <li>お住まいの地域におけるタバコのおおよその価格。</li>
+                <li>節約額および健康マイルストーンの計算に関連する任意の設定。</li>
+            </ul>
+            <p>
+                これらの情報はすべてあなた自身が入力するものであり、利用中のバージョンが提供する機能の範囲で、
+                アプリ内からいつでも閲覧・更新・削除できます。
+            </p>
+
+            <h2>3. 個人を特定できる情報の不収集</h2>
+            <p>
+                本アプリは、あなたを直接特定できる情報を収集しないよう設計されています。具体的には次のとおりです。
+            </p>
+            <ul>
+                <li>本名、メールアドレス、電話番号、住所、身分証番号などの提供は求めません。</li>
+                <li>端末内の連絡先、写真、メッセージ、その他の個人的なコンテンツにはアクセスしません。</li>
+                <li>本アプリの主要機能を利用するために、アカウント作成やログインは必要ありません。</li>
+            </ul>
+
+            <h2>4. データの保存場所</h2>
+            <p>
+                あなたが本アプリに入力したデータは、すべて端末内にローカル保存されます。
+                それらのデータは、アプリ内で計算を行い進捗を表示する目的のみに使用され、
+                当社が運営する別個のサーバーに送信または保存されることはありません。
+            </p>
+            <p>
+                端末の設定によっては、これらのデータが iCloud や Google バックアップなどの
+                システムレベルのバックアップに含まれる場合があります。
+                その場合、バックアップの管理およびプライバシー保護については、
+                OS やサービス提供者のポリシーが適用されます。
+            </p>
+
+            <h2>5. 分析、広告、および第三者サービス</h2>
+            <p>
+                現在のバージョンの本アプリにはアプリ内広告は含まれておらず、
+                他のアプリやウェブサイト間であなたを追跡するような第三者分析 SDK も統合していません。
+            </p>
+            <p>
+                将来のバージョンでこれが変更される場合、どの情報がどの目的で収集されるのか、
+                またそれをどのように管理できるのかを明確に説明し、本プライバシーポリシーを更新します。
+            </p>
+
+            <h2>6. データの保存期間と削除</h2>
+            <p>
+                あなたの禁煙履歴と設定は、本アプリを使用している間、端末内に保持されます。
+                一部のバージョンでは、アプリ内でデータをリセットでき、
+                アプリをアンインストールすると、すべてのアプリデータが削除されます。
+            </p>
+
+            <h2>7. 子どもについて</h2>
+            <p>
+                I'm Smoke-Free は、主に成人を対象とした健康関連の自己トラッキングツールです。
+                多くの国で 13 歳未満と定義されるような児童を対象としたサービスではありません。
+            </p>
+
+            <h2>8. 本ポリシーの変更</h2>
+            <p>
+                当社は、アプリの機能や適用される法律の変更に応じて、このプライバシーポリシーを更新する場合があります。
+                重要な変更がある場合、本ページ上部の「施行日」を更新し、必要に応じてアプリ内で通知することがあります。
+            </p>
+
+            <h2>9. お問い合わせ</h2>
+            <p>
+                本アプリまたは本プライバシーポリシーに関するご質問・ご意見・プライバシー関連のご要望がある場合は、
+                下記アドレスまでご連絡ください。
+            </p>
+            <p>
+                メールアドレス：<a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+
+        <section class="policy" data-lang="de" style="display:none">
+            <p>
+                Die App "I'm Smoke-Free" (im Folgenden "App") wird von DearDoor Studio ("wir") entwickelt und betrieben.
+                Diese Datenschutzerklärung erläutert, welche Informationen die App verwendet und wie diese verarbeitet werden.
+                Die App ist als persönliches Werkzeug konzipiert, um deine rauchfreie Zeit zu verfolgen,
+                das eingesparte Geld zu schätzen und theoretische Gesundheitsverbesserungen anhand
+                öffentlicher Informationen der Weltgesundheitsorganisation (WHO) zu veranschaulichen.
+            </p>
+
+            <h2>1. Zweck der App</h2>
+            <p>
+                I'm Smoke-Free hilft dir, dein Rauchstopp-Datum und deine bisherigen Rauchgewohnheiten zu erfassen
+                und anschließend Folgendes zu berechnen:
+            </p>
+            <ul>
+                <li>Wie lange du bereits rauchfrei bist.</li>
+                <li>Wie viel Geld du durch den Verzicht auf Zigaretten theoretisch eingespart hast.</li>
+                <li>
+                    Eine theoretische Darstellung von Meilensteinen deiner Gesundheitsverbesserung,
+                    inspiriert durch WHO-Daten und weitere Gesundheitsquellen
+                    (z. B. die Erholung von Herz, Lunge und Sinnesorganen im Zeitverlauf).
+                </li>
+            </ul>
+
+            <h2>2. Von dir eingegebene Daten</h2>
+            <p>Um diese Funktionen anbieten zu können, ermöglicht dir die App, unter anderem folgende Daten manuell einzugeben:</p>
+            <ul>
+                <li>Dein Rauchstopp-Datum bzw. der Zeitpunkt, an dem du mit dem Rauchen aufgehört hast.</li>
+                <li>Deine früheren Rauchgewohnheiten (z. B. Zigaretten pro Tag oder Schachteln pro Woche).</li>
+                <li>Den ungefähren Preis von Zigaretten in deiner Region.</li>
+                <li>Optionale Einstellungen für die Berechnung von Einsparungen und Gesundheitsmeilensteinen.</li>
+            </ul>
+            <p>
+                Alle diese Informationen werden von dir selbst eingegeben. Du kannst sie entsprechend
+                den in deiner App-Version verfügbaren Funktionen jederzeit einsehen, ändern oder löschen.
+            </p>
+
+            <h2>3. Keine Erhebung personenbezogener Identifikationsdaten</h2>
+            <p>
+                Die App ist so gestaltet, dass sie keine Daten sammelt, die dich direkt identifizieren.
+                Insbesondere:
+            </p>
+            <ul>
+                <li>Wir fragen nicht nach deinem richtigen Namen, deiner E‑Mail‑Adresse, Telefonnummer, Postanschrift oder Ausweisnummer.</li>
+                <li>Wir greifen nicht auf deine Kontakte, Fotos, Nachrichten oder andere persönliche Inhalte auf deinem Gerät zu.</li>
+                <li>Für die Nutzung der Kernfunktionen der App ist kein Konto und keine Anmeldung erforderlich.</li>
+            </ul>
+
+            <h2>4. Speicherort deiner Daten</h2>
+            <p>
+                Alle Daten, die du in I'm Smoke-Free eingibst, werden lokal auf deinem Gerät gespeichert.
+                Sie werden ausschließlich innerhalb der App verwendet, um Berechnungen durchzuführen
+                und deinen Fortschritt anzuzeigen. Wir betreiben keine separaten Server,
+                die deine Fortschrittsdaten empfangen oder speichern.
+            </p>
+            <p>
+                Abhängig von den Einstellungen deines Geräts können diese Daten in systemweiten Backups
+                (z. B. iCloud, Google‑Backup oder andere Sicherungsdienste) enthalten sein.
+                Diese Backups werden vom Anbieter deines Betriebssystems verwaltet,
+                dessen Datenschutzbestimmungen insoweit gelten.
+            </p>
+
+            <h2>5. Analysen, Werbung und Dienste Dritter</h2>
+            <p>
+                Die aktuelle Version von I'm Smoke-Free enthält keine In‑App‑Werbung und
+                integriert keine Analyse‑SDKs von Drittanbietern, die dich über Apps oder Websites hinweg verfolgen.
+            </p>
+            <p>
+                Sollten sich diese Punkte in einer zukünftigen Version ändern, werden wir diese Datenschutzerklärung
+                entsprechend anpassen und klar darlegen, welche Daten zu welchem Zweck erhoben werden
+                und wie du dies steuern kannst.
+            </p>
+
+            <h2>6. Aufbewahrung und Löschung von Daten</h2>
+            <p>
+                Deine Rauchfrei‑Historie und deine Einstellungen bleiben so lange auf deinem Gerät gespeichert,
+                wie du die App nutzt. In einigen Versionen kannst du deine Daten innerhalb der App zurücksetzen;
+                du kannst außerdem alle App‑Daten löschen, indem du die App deinstallierst.
+            </p>
+
+            <h2>7. Kinder</h2>
+            <p>
+                I'm Smoke-Free ist ein Gesundheitstool zur Selbstbeobachtung, das sich an erwachsene Nutzer richtet.
+                Die App ist nicht für Kinder im Sinne der in deinem Land geltenden Gesetze konzipiert
+                (z. B. Personen unter 13 Jahren in vielen Ländern).
+            </p>
+
+            <h2>8. Änderungen dieser Richtlinie</h2>
+            <p>
+                Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren,
+                um Änderungen der App oder der geltenden Rechtslage zu berücksichtigen.
+                Bei wesentlichen Änderungen aktualisieren wir das "Gültigkeitsdatum" oben auf dieser Seite
+                und informieren dich gegebenenfalls zusätzlich innerhalb der App.
+            </p>
+
+            <h2>9. Kontakt</h2>
+            <p>
+                Wenn du Fragen, Feedback oder datenschutzbezogene Anliegen in Bezug auf I'm Smoke-Free hast,
+                kannst du uns unter folgender Adresse kontaktieren:
+            </p>
+            <p>
+                E‑Mail: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a>
+            </p>
+        </section>
+    </div>
+
+    <script>
+        (function () {
+            var sections = document.querySelectorAll(".policy");
+            var links = document.querySelectorAll(".lang-link");
+
+            function showLanguage(lang) {
+                var found = false;
+                sections.forEach(function (section) {
+                    if (section.getAttribute("data-lang") === lang) {
+                        section.style.display = "block";
+                        found = true;
+                    } else {
+                        section.style.display = "none";
+                    }
+                });
+                links.forEach(function (link) {
+                    if (link.getAttribute("data-lang") === lang) {
+                        link.classList.add("is-active");
+                    } else {
+                        link.classList.remove("is-active");
+                    }
+                });
+                if (!found) {
+                    sections.forEach(function (section) {
+                        if (section.getAttribute("data-lang") === "en") {
+                            section.style.display = "block";
+                        }
+                    });
+                    links.forEach(function (link) {
+                        if (link.getAttribute("data-lang") === "en") {
+                            link.classList.add("is-active");
+                        } else {
+                            link.classList.remove("is-active");
+                        }
+                    });
+                }
+            }
+
+            function normalize(lang) {
+                if (!lang) {
+                    return "en";
+                }
+                var lower = lang.toLowerCase();
+                if (lower.indexOf("zh") === 0) {
+                    if (lower.indexOf("hant") !== -1 || lower.indexOf("tw") !== -1 || lower.indexOf("hk") !== -1 || lower.indexOf("mo") !== -1) {
+                        return "zh-Hant";
+                    }
+                    return "zh-Hans";
+                }
+                if (lower.indexOf("ko") === 0) {
+                    return "ko";
+                }
+                if (lower.indexOf("fr") === 0) {
+                    return "fr";
+                }
+                if (lower.indexOf("es") === 0) {
+                    return "es";
+                }
+                if (lower.indexOf("it") === 0) {
+                    return "it";
+                }
+                if (lower.indexOf("ja") === 0 || lower.indexOf("jp") === 0) {
+                    return "ja";
+                }
+                if (lower.indexOf("de") === 0) {
+                    return "de";
+                }
+                return "en";
+            }
+
+            var browserLang = normalize(navigator.language || navigator.userLanguage || "en");
+            var initial = "en";
+            sections.forEach(function (section) {
+                if (section.getAttribute("data-lang") === browserLang) {
+                    initial = browserLang;
+                }
+            });
+            showLanguage(initial);
+
+            links.forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    var lang = link.getAttribute("data-lang");
+                    showLanguage(lang);
+                });
+            });
+        })();
+    </script>
+</body>
 </html>
