@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tomato-Mac — Menu Bar Pomodoro with White Noise</title>
+    <meta name="description" content="Tomato-Mac is a lightweight macOS menu bar Pomodoro timer with custom sessions, white noise, and daily statistics.">
+    <style>
+        :root {
+            --bg: #05070a;
+            --panel: #0e141d;
+            --text: #e6edf3;
+            --muted: #9aa4af;
+            --accent: #7ee787;
+            --accent-soft: rgba(126, 231, 135, 0.09);
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: rgba(0, 0, 0, 0.55);
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(900px 700px at 10% 0%, rgba(126, 231, 135, 0.10), transparent 60%),
+                radial-gradient(700px 600px at 90% 0%, rgba(126, 231, 135, 0.06), transparent 60%),
+                var(--bg);
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 52px 52px;
+            opacity: 0.22;
+            mix-blend-mode: screen;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .page {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 28px 20px 40px;
+            position: relative;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(126, 231, 135, 0.40);
+            background: rgba(6, 10, 16, 0.9);
+            box-shadow: 0 14px 30px var(--shadow);
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-text strong {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-text span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(5, 7, 10, 0.8);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr);
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        @media (min-width: 880px) {
+            .hero {
+                grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+            }
+        }
+
+        .hero-main {
+            padding: 20px 18px 18px;
+            border-radius: 18px;
+            background: rgba(6, 10, 16, 0.9);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 40px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .kicker-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        h1 {
+            margin: 14px 0 6px;
+            font-size: 28px;
+            letter-spacing: -0.02em;
+        }
+
+        .subline {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .quote {
+            margin: 14px 0;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(8, 12, 18, 1);
+            border: 1px solid rgba(126, 231, 135, 0.25);
+            font-size: 13px;
+        }
+
+        .quote-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .quote-body {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            border: 1px solid rgba(126, 231, 135, 0.45);
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(126, 231, 135, 0.18), rgba(10, 15, 22, 1));
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+
+        .btn.secondary {
+            border-color: var(--border);
+            background: rgba(8, 12, 18, 0.95);
+            color: var(--muted);
+        }
+
+        .btn span {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .hero-aside {
+            display: grid;
+            gap: 14px;
+        }
+
+        .card {
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(6, 10, 16, 0.92);
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 32px var(--shadow);
+        }
+
+        .card h2 {
+            margin: 0 0 4px;
+            font-size: 14px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .card p {
+            margin: 0 0 8px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .mini-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .mini-list li + li {
+            margin-top: 4px;
+        }
+
+        .features {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 780px) {
+            .features {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .feature-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .feature-list li + li {
+            margin-top: 4px;
+        }
+
+        .feature-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer {
+            margin-top: 26px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .footer a {
+            color: var(--muted);
+        }
+        .footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="top-bar">
+            <div class="brand">
+                <div class="brand-mark">TM</div>
+                <div class="brand-text">
+                    <strong>TOMATO-MAC</strong>
+                    <span>Menu Bar Pomodoro · Focus in the background</span>
+                </div>
+            </div>
+            <div class="top-links">
+                <span class="pill">macOS Status Bar App</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-main">
+                    <div class="kicker">
+                        <div class="kicker-dot"></div>
+                        FOCUS FLOW
+                    </div>
+                    <h1>Stay focused with a calm Pomodoro timer that never gets in your way.</h1>
+                    <p class="subline">
+                        Tomato-Mac lives in the macOS menu bar, so you can start a session, change durations,
+                        and layer in white noise without leaving your workspace.
+                    </p>
+
+                    <div class="quote">
+                        <div class="quote-title">Designed for uninterrupted work</div>
+                        <div class="quote-body">
+                            Start, stop, and review your focus history in seconds. No accounts. No clutter.
+                            Just a dependable timer and the ambience you need to stay on track.
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a class="btn" href="#features">
+                            See the features
+                            <span>Pomodoro · White Noise · Stats</span>
+                        </a>
+                        <a class="btn secondary" href="privacy.html">
+                            Privacy policy
+                            <span>Local data only</span>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero-aside">
+                    <div class="card">
+                        <h2>Highlights</h2>
+                        <p>Everything you need to focus, without opening another window.</p>
+                        <ul class="mini-list">
+                            <li>One-click start and stop from the status bar.</li>
+                            <li>Table-based editor for custom Pomodoro durations.</li>
+                            <li>White noise with volume and sound selection.</li>
+                            <li>Today + history stats with gentle Pro reminders.</li>
+                        </ul>
+                    </div>
+                </aside>
+            </section>
+
+            <section id="features" class="features">
+                <div>
+                    <div class="section-title">Core Features</div>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-label">Status Bar Pomodoro.</span>
+                            Start or stop instantly without switching apps.
+                        </li>
+                        <li>
+                            <span class="feature-label">Custom Sessions.</span>
+                            Edit durations, names, and defaults in a clear table view.
+                        </li>
+                        <li>
+                            <span class="feature-label">White Noise Companion.</span>
+                            Choose sounds, adjust volume, and sync playback with sessions.
+                        </li>
+                        <li>
+                            <span class="feature-label">Statistics View.</span>
+                            Track today’s completed sessions and browse your history.
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="section-title">Workflow</div>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-label">Start from the menu bar.</span>
+                            No dock window required for daily focus.
+                        </li>
+                        <li>
+                            <span class="feature-label">Tune each session.</span>
+                            Switch between focus blocks and breaks instantly.
+                        </li>
+                        <li>
+                            <span class="feature-label">Review progress.</span>
+                            See daily totals and long-term trends at a glance.
+                        </li>
+                        <li>
+                            <span class="feature-label">Stay minimal.</span>
+                            Zero account setup and all data stored locally.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div>© 2026 DearDoor Studio · Tomato-Mac</div>
+            <div>
+                Contact: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a> ·
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
