@@ -245,8 +245,21 @@
         }
 
         .project-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 14px;
             letter-spacing: 0.2px;
+        }
+
+        .project-icon {
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            border: 1px solid rgba(126, 231, 135, 0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            background: rgba(8, 12, 18, 0.8);
         }
 
         .badge {
@@ -353,11 +366,15 @@
                 <div class="grid">
                     <article class="project">
                         <div class="project-header">
-                            <div class="project-title">I'm Smoke-Free</div>
+                            <div class="project-title">
+                                <img class="project-icon" src="/im-smoke-free/app-icon-512.jpg" alt="I'm Smoke-Free app icon">
+                                <span>I'm Smoke-Free</span>
+                            </div>
                             <div class="badge">iOS</div>
                         </div>
-                        <p>A tiny habit companion focused on quitting smoking.</p>
+                        <p>The last pack you’ll ever buy. Quit Instantly + Quit Forever.</p>
                         <div class="project-links">
+                            <a href="https://apps.apple.com/us/app/im-smoke-free/id6757760009">App Store</a>
                             <a href="/im-smoke-free/index.html">Website</a>
                             <a href="/im-smoke-free/privacy.html">Privacy policy</a>
                         </div>
