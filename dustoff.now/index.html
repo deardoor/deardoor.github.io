@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DustOff.Now — Clean Your Mac Keyboard Safely</title>
+    <meta name="description" content="DustOff.Now temporarily blocks macOS input for safe keyboard cleaning and offers a solid color screen for display wiping.">
+    <style>
+        :root {
+            --bg: #05070a;
+            --panel: #0e141d;
+            --text: #e6edf3;
+            --muted: #9aa4af;
+            --accent: #8bd5ff;
+            --accent-soft: rgba(139, 213, 255, 0.09);
+            --border: rgba(255, 255, 255, 0.10);
+            --shadow: rgba(0, 0, 0, 0.55);
+        }
+
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(900px 700px at 12% 0%, rgba(139, 213, 255, 0.12), transparent 60%),
+                radial-gradient(700px 600px at 88% 0%, rgba(139, 213, 255, 0.08), transparent 60%),
+                var(--bg);
+            line-height: 1.6;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 52px 52px;
+            opacity: 0.22;
+            mix-blend-mode: screen;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover { text-decoration: underline; }
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .page {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 28px 20px 40px;
+            position: relative;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 26px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(139, 213, 255, 0.40);
+            background: rgba(6, 10, 16, 0.9);
+            box-shadow: 0 14px 30px var(--shadow);
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            font-size: 11px;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-text strong {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-text span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .pill {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(5, 7, 10, 0.8);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr);
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        @media (min-width: 880px) {
+            .hero {
+                grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+            }
+        }
+
+        .hero-main {
+            padding: 20px 18px 18px;
+            border-radius: 18px;
+            background: rgba(6, 10, 16, 0.9);
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 40px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .kicker-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 999px;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        h1 {
+            margin: 14px 0 6px;
+            font-size: 28px;
+            letter-spacing: -0.02em;
+        }
+
+        .subline {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .quote {
+            margin: 14px 0;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: rgba(8, 12, 18, 1);
+            border: 1px solid rgba(139, 213, 255, 0.25);
+            font-size: 13px;
+        }
+
+        .quote-title {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .quote-body {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            border: 1px solid rgba(139, 213, 255, 0.45);
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(139, 213, 255, 0.18), rgba(10, 15, 22, 1));
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+
+        .btn.secondary {
+            border-color: var(--border);
+            background: rgba(8, 12, 18, 0.95);
+            color: var(--muted);
+        }
+
+        .btn span {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .hero-aside {
+            display: grid;
+            gap: 14px;
+        }
+
+        .card {
+            padding: 12px;
+            border-radius: 16px;
+            background: rgba(6, 10, 16, 0.92);
+            border: 1px solid var(--border);
+            box-shadow: 0 16px 32px var(--shadow);
+        }
+
+        .card h2 {
+            margin: 0 0 4px;
+            font-size: 14px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .card p {
+            margin: 0 0 8px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .mini-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .mini-list li + li {
+            margin-top: 4px;
+        }
+
+        .app-icon {
+            width: 96px;
+            height: 96px;
+            border-radius: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 18px 30px var(--shadow);
+            background: rgba(8, 12, 18, 0.7);
+            display: block;
+        }
+
+        .features {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+            gap: 18px;
+        }
+
+        @media (max-width: 780px) {
+            .features {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .section-title {
+            font-size: 13px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .feature-list {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .feature-list li + li {
+            margin-top: 4px;
+        }
+
+        .feature-label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .footer {
+            margin-top: 26px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .footer a {
+            color: var(--muted);
+        }
+        .footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header class="top-bar">
+            <div class="brand">
+                <div class="brand-mark">DO</div>
+                <div class="brand-text">
+                    <strong>DUSTOFF.NOW</strong>
+                    <span>Keyboard cleaning mode for macOS</span>
+                </div>
+            </div>
+            <div class="top-links">
+                <span class="pill">macOS Utility</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-main">
+                    <div class="kicker">
+                        <div class="kicker-dot"></div>
+                        CLEAN MODE
+                    </div>
+                    <h1>Lock input in seconds, wipe your keyboard without accidental chaos.</h1>
+                    <p class="subline">
+                        DustOff.Now temporarily blocks system input so you can clean your MacBook or
+                        Mac keyboard with confidence. It also offers a solid color screen, making it easy
+                        to polish your display in the same flow.
+                    </p>
+
+                    <div class="quote">
+                        <div class="quote-title">Made for careful cleaning</div>
+                        <div class="quote-body">
+                            No accounts, no distractions. Just a calm, reliable way to pause input,
+                            clean thoroughly, and return to work immediately.
+                        </div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a class="btn" href="#features">
+                            See the features
+                            <span>Input Shield · Solid Color Screen</span>
+                        </a>
+                        <a class="btn secondary" href="privacy.html">
+                            Privacy policy
+                            <span>No data collected</span>
+                        </a>
+                    </div>
+                </div>
+
+                <aside class="hero-aside">
+                    <div class="card">
+                        <h2>Highlights</h2>
+                        <p>Every clean-up step is focused and distraction-free.</p>
+                        <ul class="mini-list">
+                            <li>Temporarily blocks keyboard input while you wipe keys.</li>
+                            <li>One-tap exit to restore normal typing.</li>
+                            <li>Solid color screen for streak-free display cleaning.</li>
+                            <li>No sign-in, no data collection.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h2>App Icon</h2>
+                        <img class="app-icon" src="icon_256x256.png" alt="DustOff.Now app icon">
+                    </div>
+                </aside>
+            </section>
+
+            <section id="features" class="features">
+                <div>
+                    <div class="section-title">Core Features</div>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-label">Temporary input lock.</span>
+                            Prevent accidental keystrokes during cleaning.
+                        </li>
+                        <li>
+                            <span class="feature-label">Instant restore.</span>
+                            Exit cleaning mode and return to work immediately.
+                        </li>
+                        <li>
+                            <span class="feature-label">Solid color screen.</span>
+                            Fill the display with a clean color for easy wiping.
+                        </li>
+                        <li>
+                            <span class="feature-label">Privacy first.</span>
+                            No accounts, no tracking, no data collection.
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="section-title">Best For</div>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-label">Keyboard cleaning.</span>
+                            Wipe keys without launching random shortcuts.
+                        </li>
+                        <li>
+                            <span class="feature-label">Screen care.</span>
+                            Pair the solid color screen with a microfiber cloth.
+                        </li>
+                        <li>
+                            <span class="feature-label">Quick maintenance.</span>
+                            Keep your workstation tidy in under a minute.
+                        </li>
+                        <li>
+                            <span class="feature-label">Peace of mind.</span>
+                            Stay focused on cleaning, not on canceling popups.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div>© 2026 DearDoor Studio · DustOff.Now</div>
+            <div>
+                Contact: <a href="mailto:support@madeincoder.com">support@madeincoder.com</a> ·
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
